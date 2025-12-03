@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>BORG Collective</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 8px;
+      width: 280px;
+      background: #050510;
+      color: #f5f5f5;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0 0 6px 0;
+      text-align: center;
+    }
+    small {
+      display: block;
+      font-size: 10px;
+      opacity: 0.7;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      resize: vertical;
+      font-size: 12px;
+      padding: 4px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #0d0d1a;
+      color: #f5f5f5;
+    }
+    button {
+      margin-top: 6px;
+      width: 100%;
+      padding: 6px;
+      border: none;
+      border-radius: 4px;
+      background: #4c6fff;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 11px;
+    }
+    .status {
+      margin-top: 6px;
+      font-size: 10px;
+      opacity: 0.8;
+      min-height: 14px;
+    }
+    label {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>BORG</h1>
+  <small>Bridge for Orchestrated Reasoning Groups</small>
+
+  <textarea id="borg-input" placeholder="Ask all AIs a question, or leave a note for the Collective..."></textarea>
+
+  <div class="row">
+    <label>
+      <input type="radio" name="mode" value="question" checked />
+      Broadcast as question
+    </label>
+  </div>
+  <div class="row">
+    <label>
+      <input type="radio" name="mode" value="note" />
+      Log as internal note only
+    </label>
+  </div>
+
+  <button id="borg-send">Send to Collective</button>
+
+  <div class="status" id="borg-status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
