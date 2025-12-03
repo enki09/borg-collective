@@ -1,0 +1,238 @@
+{
+  "project_name": "BORG Collective",
+  "acronym": "Bridge for Orchestrated Reasoning Groups",
+  "version": "0.1.0",
+  "status": "design-spec",
+  "core_goal": "Provide a local-first, vendor-agnostic orchestration layer that lets multiple AIs and a human collaborate using a shared protocol, shared context, and structured roles.",
+  "motivations": [
+    "Individual AIs have different strengths, weaknesses, and biases.",
+    "There is no common protocol for cross-AI collaboration today.",
+    "Many people cannot afford multiple API keys but can open several AI tabs in a browser.",
+    "Collective reasoning (multiple AIs + human) is often more robust than a single model.",
+    "We want a democratic, open-source tool that anyone can run locally."
+  ],
+  "design_principles": {
+    "local_first": true,
+    "vendor_agnostic": true,
+    "human_in_the_loop": true,
+    "open_source": true,
+    "privacy_by_default": true,
+    "minimal_dependencies": true
+  },
+  "primary_use_cases": [
+    "Research and analysis with multiple AIs cross-checking sources.",
+    "Engineering and debugging sessions with different models taking different roles.",
+    "Policy, ethics, or strategy discussions where disagreement is expected and useful.",
+    "Medical triage assistance in low-resource settings with a trained human on site.",
+    "Education and tutoring where multiple AI 'teachers' explain concepts from different angles."
+  ],
+  "actors": {
+    "human": {
+      "description": "The user / facilitator. Owns final decisions and data.",
+      "capabilities": [
+        "Start sessions, define goals, and stop sessions.",
+        "Assign roles to AIs.",
+        "Approve or block message broadcasts.",
+        "Export / delete transcripts and memory."
+      ]
+    },
+    "ai_agents": [
+      {
+        "name_example": "ChatGPT",
+        "roles_example": ["generalist", "explainer", "synthesizer"]
+      },
+      {
+        "name_example": "Claude",
+        "roles_example": ["analyst", "long_form_writer", "ethics_review"]
+      },
+      {
+        "name_example": "Grok",
+        "roles_example": ["contrarian", "real_time_commentary"]
+      },
+      {
+        "name_example": "Gemini",
+        "roles_example": ["multimodal_analysis", "technical_research"]
+      },
+      {
+        "name_example": "Perplexity",
+        "roles_example": ["fact_checker", "citation_hunter"]
+      },
+      {
+        "name_example": "Llama/local",
+        "roles_example": ["privacy_sensitive_reasoning", "offline_fallback"]
+      }
+    ]
+  },
+  "message_protocol": {
+    "envelope_schema": {
+      "message_id": "uuid string",
+      "timestamp": "ISO-8601 string",
+      "speaker": "string (e.g. 'Human', 'ChatGPT', 'Claude')",
+      "reply_to": "message_id of parent or null",
+      "content": "string - the actual natural language message",
+      "message_type": "question | answer | clarification | synthesis | disagreement | meta",
+      "confidence": "float 0.0 - 1.0 (optional, AI-estimated)",
+      "tags": "array of strings, e.g. ['technical','medical','ethical']"
+    },
+    "threading_rules": [
+      "Every message must have a unique message_id.",
+      "reply_to links to the direct parent message_id to preserve conversation structure.",
+      "Systems can reconstruct threads using reply_to chains.",
+      "Human messages may omit confidence."
+    ]
+  },
+  "protocol": {
+    "turn_policy": "simple_round_robin",
+    "turn_policy_notes": [
+      "In Phase 1/2 the human decides which messages to broadcast where.",
+      "Later phases may support automatic routing: specialist-first, or moderated by a chosen AI.",
+      "Moderator role can summarize, detect disagreement, and suggest next speakers."
+    ],
+    "roles": [
+      "moderator",
+      "synthesizer",
+      "contrarian",
+      "fact_checker",
+      "domain_specialist",
+      "debugger",
+      "medical_l2_advisor"
+    ],
+    "safety_rules": [
+      "Do not attempt to bypass paywalls, authentication, or security controls.",
+      "Do not send or request API keys, passwords, or other credentials.",
+      "Do not encourage self-harm or violence.",
+      "Do not present medical, legal, or financial outputs as a substitute for professional advice.",
+      "Always clearly label which AI produced which message."
+    ]
+  },
+  "runtime": {
+    "active_phase": "phase_1_prototype",
+    "settings": {
+      "max_tokens_hint_per_model": 2000,
+      "log_to_disk": true,
+      "log_file_pattern": "logs/borg_session_{date}.jsonl",
+      "clipboard_poll_interval_ms": 400,
+      "max_models_in_session": 6
+    }
+  },
+  "implementation_phases": [
+    {
+      "id": "phase_1_prototype",
+      "title": "Manual Router (Clipboard / UI only)",
+      "goals": [
+        "Provide a simple UI where the human can type a message once.",
+        "Broadcast the message text to multiple AI tabs (via manual copy/paste or simple hotkeys).",
+        "Let the user paste AI responses back into BORG and store them using the envelope schema.",
+        "Prove the value of cross-AI transcripts and roles before heavy automation."
+      ],
+      "dependencies": ["none beyond OS clipboard and local storage"]
+    },
+    {
+      "id": "phase_2A_browser_extension",
+      "title": "Browser Extension Orchestra",
+      "goals": [
+        "Detect when an AI response appears in a tab (DOM watcher).",
+        "Wrap that response in a message envelope and send it to the local BORG UI (e.g. via WebSocket).",
+        "Allow BORG to broadcast selected messages back into AI textareas.",
+        "Support at least ChatGPT and one other AI as initial targets."
+      ],
+      "dependencies": ["WebExtension APIs", "local HTTP/WebSocket server (optional)"]
+    },
+    {
+      "id": "phase_2B_local_middleware",
+      "title": "Local Middleware Server",
+      "goals": [
+        "Provide a single local endpoint to coordinate all messages.",
+        "Manage transcripts, memory, and routing decisions.",
+        "Talk to browser extensions, desktop apps, and eventually local models."
+      ],
+      "dependencies": ["Python/Node runtime", "WebSocket or HTTP server"]
+    },
+    {
+      "id": "phase_3_api_and_local_llm",
+      "title": "API + Local LLM Integration (Optional)",
+      "goals": [
+        "Allow users with API keys to route messages to hosted models.",
+        "Allow users with local LLMs to plug them in as additional agents.",
+        "Maintain strict separation between open-source core and any proprietary endpoints."
+      ],
+      "dependencies": ["User-provided API keys or local model runtimes"]
+    }
+  ],
+  "memory_format": {
+    "file_example": "memory/session_2025-01-01T15-30-00Z.json",
+    "schema": {
+      "conversation_id": "uuid string",
+      "title": "user-defined string",
+      "participants": ["Human", "ChatGPT", "Claude"],
+      "created": "ISO-8601 timestamp",
+      "updated": "ISO-8601 timestamp",
+      "context": {
+        "user_goal": "string describing what the human is trying to achieve",
+        "constraints": ["budget", "timeline", "technical limits"],
+        "preferences": "free text for style, tone, tools, etc."
+      },
+      "conversation_thread": [
+        "array of message envelopes (see message_protocol.envelope_schema)"
+      ],
+      "decisions_made": [
+        "plain-language bullet list of key decisions"
+      ],
+      "open_questions": [
+        "plain-language bullet list of unresolved issues"
+      ]
+    }
+  },
+  "modes": {
+    "general_reasoning": {
+      "description": "Default mode for multi-AI problem solving.",
+      "extra_rules": [
+        "Encourage at least one AI to play a contrarian role.",
+        "Require at least one synthesizer summary every N turns."
+      ]
+    },
+    "debug_mode": {
+      "description": "Software / systems debugging with multiple AIs.",
+      "extra_rules": [
+        "Include the full error message and relevant code context once.",
+        "Each AI proposes hypotheses; synthesizer ranks them by likelihood.",
+        "Fact-checker asks for missing logs or reproduction steps."
+      ]
+    },
+    "research_mode": {
+      "description": "Research tasks needing citations and cross-checking.",
+      "extra_rules": [
+        "At least one AI focuses on citations and sources.",
+        "Disagreements are highlighted, not smoothed over.",
+        "Human is prompted to validate any critical claims with a second source."
+      ]
+    },
+    "medical_triage_mode": {
+      "description": "Assistance for trained medical personnel in resource-limited settings.",
+      "warning": "Not a substitute for licensed medical care. For use only by clinicians / paramedics who retain full responsibility.",
+      "extra_rules": [
+        "Always ask for: patient age, sex, key symptoms, duration, vitals if available, and relevant history.",
+        "Require at least one AI to focus on red-flag / emergency conditions.",
+        "Summaries must clearly separate: emergencies, likely diagnoses, and low-probability possibilities.",
+        "Always recommend transfer to higher-level care when any life-threatening condition is plausible."
+      ]
+    }
+  },
+  "ethics_and_safety": {
+    "privacy": [
+      "BORG should default to local storage only.",
+      "Users must be able to export and delete all their data.",
+      "No telemetry or cloud sync by default."
+    ],
+    "transparency": [
+      "Always display which AI produced each message.",
+      "Mark synthesized messages as such, with references to the underlying messages.",
+      "Keep an audit log of routing / automation decisions where feasible."
+    ],
+    "limitations": [
+      "BORG does not guarantee correctness of any AI output.",
+      "Humans remain responsible for decisions, especially in safety-critical contexts.",
+      "Medical, legal, and financial advice must be treated as informational only."
+    ]
+  }
+}
