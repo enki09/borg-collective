@@ -1,1 +1,24 @@
 
+{
+  "manifest_version": 3,
+  "name": "BORG Extension",
+  "version": "0.1",
+  "description": "Browser extension for BORG multi-AI orchestration.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "*://chat.openai.com/*",
+    "*://claude.ai/*",
+    "*://bard.google.com/*",
+    "*://grok.x.ai/*",
+    "*://www.perplexity.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
