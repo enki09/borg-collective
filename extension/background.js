@@ -53,8 +53,10 @@ function saveStateToStorage() {
     if (err) {
       log("Error saving borgState:", err);
     } else {
-      log("borgState saved. Messages:",
-          borgState.conversations[DEFAULT_CONVERSATION_ID]?.messages.length || 0);
+      log(
+        "borgState saved. Messages:",
+        borgState.conversations[DEFAULT_CONVERSATION_ID]?.messages.length || 0
+      );
     }
   });
 }
@@ -86,7 +88,7 @@ function findAITabs(callback) {
 function broadcastToOtherTabs(envelope, originTabId) {
   findAITabs(tabs => {
     tabs.forEach(tab => {
-      if (tab.id === originTabId) return; // skip sender
+      if (originTabId !== null && tab.id === originTabId) return; // skip sender if known
 
       chrome.tabs.sendMessage(
         tab.id,
@@ -111,19 +113,47 @@ function broadcastToOtherTabs(envelope, originTabId) {
 //////////////////////////////
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  // msg.type can be "borg_message" from content.js or future commands from popup
+  // msg.type can be "borg_message" from content.js or commands from popup
   if (!msg || !msg.type) {
     sendResponse && sendResponse({ ok: false, error: "No type" });
-    return; // important in MV3: listener must return a value or true
+    return;
   }
 
+  // 1) Messages coming *from* AI tabs (content.js)
   if (msg.type === "borg_message") {
     const envelope = msg.payload;
     if (!envelope || !envelope.message_id) {
       sendResponse && sendResponse({ ok: false, error: "Invalid envelope" });
       return;
     }
-      if (msg.type === "borg_user_broadcast") {
+
+    log(
+      "Received BORG envelope from content script:",
+      envelope.speaker,
+      "→",
+      envelope.site
+    );
+
+    // Store in local conversation
+    addMessageToConversation(envelope, DEFAULT_CONVERSATION_ID);
+    saveStateToStorage();
+
+    // Basic routing: broadcast AI answers to other models
+    const isAI = envelope.speaker && !envelope.speaker.startsWith("Human@");
+
+    if (isAI) {
+      const originTabId = sender && sender.tab ? sender.tab.id : null;
+      if (originTabId !== null) {
+        broadcastToOtherTabs(envelope, originTabId);
+      }
+    }
+
+    sendResponse && sendResponse({ ok: true });
+    return;
+  }
+
+  // 2) Messages coming from the popup UI (user broadcast)
+  if (msg.type === "borg_user_broadcast") {
     const { text, mode } = msg.payload || {};
     if (!text) {
       sendResponse && sendResponse({ ok: false, error: "No text" });
@@ -131,7 +161,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     }
 
     const envelope = {
-      message_id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      message_id: crypto.randomUUID
+        ? crypto.randomUUID()
+        : String(Date.now()),
       timestamp: new Date().toISOString(),
       speaker: "Human@BORG",
       reply_to: null,
@@ -147,36 +179,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     addMessageToConversation(envelope, DEFAULT_CONVERSATION_ID);
     saveStateToStorage();
 
-    // For now, also broadcast to all AI tabs so content scripts
-    // can (in future) inject or at least log the inbound question.
+    // Broadcast to all AI tabs so they can (later) inject or log this
     broadcastToOtherTabs(envelope, null);
 
     sendResponse && sendResponse({ ok: true });
     return;
   }
 
-    log("Received BORG envelope from content script:", envelope.speaker, "→", envelope.site);
-
-    // 1. Store it in local conversation
-    addMessageToConversation(envelope, DEFAULT_CONVERSATION_ID);
-    saveStateToStorage();
-
-    // 2. Basic routing: broadcast AI answers to other models
-    //    For now: if speaker is an AI, send to others.
-    const isAI = envelope.speaker && !envelope.speaker.startsWith("Human@");
-
-    if (isAI) {
-      const originTabId = sender && sender.tab ? sender.tab.id : null;
-      if (originTabId !== null) {
-        broadcastToOtherTabs(envelope, originTabId);
-      }
-    }
-
-    sendResponse && sendResponse({ ok: true });
-    return; // stop here
-  }
-
-  // (Optional) handle commands from popup or dev tools later
+  // 3) State/debug helpers
   if (msg.type === "borg_get_state") {
     sendResponse && sendResponse({ ok: true, state: borgState });
     return;
@@ -189,6 +199,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return;
   }
 
+  // Unknown message
   sendResponse && sendResponse({ ok: false, error: "Unknown message type" });
 });
 
