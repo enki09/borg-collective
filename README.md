@@ -151,3 +151,101 @@ Phase 3 — Unified API Engine (advanced)
 BORG uses a message envelope to structure every human or AI message.
 
 Envelope Schema
+{
+  "message_id": "uuid",
+  "timestamp": "2025-01-01T12:34:56Z",
+  "speaker": "ChatGPT",
+  "reply_to": "uuid-of-parent-or-null",
+  "content": "Plain text of the message",
+  "message_type": "question | answer | clarification | synthesis | disagreement",
+  "confidence": 0.82,
+  "tags": ["technical", "architecture"]
+}
+📁 Repository Structure (Planned)
+borg-collective/
+│── README.md
+│── borg_spec.json           # Full project specification
+│── .gitignore
+│
+├── /docs/
+│   ├── architecture.md
+│   ├── message-protocol.md
+│   ├── medical-mode.md
+│
+├── /examples/
+│   ├── multi-ai-analysis.md
+│   ├── debug-session.md
+│   ├── medical-triage-demo.md
+│
+├── /extension/               # Phase 2A Browser Extension
+│   ├── manifest.json
+│   ├── content.js
+│   ├── background.js
+│   ├── /scripts/
+│       └── memory_tools.py
+│
+└── LICENSE (MIT recommended)
+💬 Example: Multi-AI Collaboration
+
+A user asks:
+
+“How can a small coastal town reduce flood risk on a low budget?”
+
+BORG orchestrates:
+	•	Claude → long-form strategy
+	•	ChatGPT → engineering breakdown
+	•	Grok → contrarian risk warnings
+	•	Gemini → satellite & terrain analysis
+	•	Perplexity → citations & sources
+	•	Llama (local) → offline redundancy
+
+BORG then synthesizes a ranked plan with:
+	•	Cost
+	•	Timeline
+	•	Uncertainties
+	•	Recommended actions
+
+This is impossible with any single AI today.
+
+⸻
+
+⚙️ Quick Start (Prototype)
+
+Clone the repo:
+git clone https://github.com/enki09/borg-collective
+cd borg-collective
+Run a sample:
+python examples/debug-session.py
+Browser extension instructions coming in Phase 2A.
+
+⸻
+
+🤝 Contributing
+
+We welcome:
+	•	Developers
+	•	AI researchers
+	•	Designers
+	•	Domain experts
+	•	Curious users
+
+Open an Issue or Discussion to join the Collective.
+
+Resistance is… optional.
+
+⸻
+
+📄 License
+
+Recommended: MIT License
+(Simple, permissive, widely adopted.)
+
+⸻
+
+🧩 Join the Collective
+
+BORG isn’t a product — it’s a protocol, a movement, and a collaboration layer for the future of multi-AI intelligence.
+
+If you want to help build the world’s first cross-AI reasoning network…
+
+You’re already part of the Collective.
