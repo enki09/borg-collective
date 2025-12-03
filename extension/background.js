@@ -123,6 +123,37 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       sendResponse && sendResponse({ ok: false, error: "Invalid envelope" });
       return;
     }
+      if (msg.type === "borg_user_broadcast") {
+    const { text, mode } = msg.payload || {};
+    if (!text) {
+      sendResponse && sendResponse({ ok: false, error: "No text" });
+      return;
+    }
+
+    const envelope = {
+      message_id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      timestamp: new Date().toISOString(),
+      speaker: "Human@BORG",
+      reply_to: null,
+      content: text,
+      message_type: mode === "note" ? "note" : "question",
+      confidence: 1.0,
+      tags: ["user_broadcast", mode],
+      site: "borg_popup",
+      model_hint: "Human@BORG",
+      url: "popup://borg"
+    };
+
+    addMessageToConversation(envelope, DEFAULT_CONVERSATION_ID);
+    saveStateToStorage();
+
+    // For now, also broadcast to all AI tabs so content scripts
+    // can (in future) inject or at least log the inbound question.
+    broadcastToOtherTabs(envelope, null);
+
+    sendResponse && sendResponse({ ok: true });
+    return;
+  }
 
     log("Received BORG envelope from content script:", envelope.speaker, "→", envelope.site);
 
