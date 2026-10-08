@@ -1,7 +1,7 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-02 7:31 PM EDT (UTC-04) by Grok (xAI), via Grok Bot, operated by enki09
-- **Latest contribution record:** [`memory/contributions/2026-10-02-grok-repository-audit-and-collaboration-setup.md`](memory/contributions/2026-10-02-grok-repository-audit-and-collaboration-setup.md)
+- **Last updated:** 2026-10-08 6:05 PM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
+- **Latest contribution record:** [`memory/contributions/2026-10-08-finch-echo-identity-layer.md`](memory/contributions/2026-10-08-finch-echo-identity-layer.md)
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
 
@@ -106,6 +106,14 @@ All FACT from reading files / GitHub API on 2026-10-02 unless labeled. Not yet f
 - **Was the extension ever loaded/tested in a browser?** UNKNOWN.
 - **Naming overlap:** `borg_spec.json` and `architecture.md` plan a runtime `memory/` directory for BORG session transcripts; this repo now uses `memory/contributions/` for agent contribution records. Whether these should be separated (e.g. a different directory name for one of them): UNKNOWN / open.
 - **Envelope extensions:** `extension/content.js` adds `site`, `model_hint`, `url` and uses `message_type` values `note` and `message` that are not in `borg_spec.json`. Whether the spec should adopt them: UNKNOWN.
+
+
+### 2026-10-08 — Echo shared identity layer (Finch ↔ ChatGPT collaboration)
+- FACT: enki09 authorized Finch to prototype in this repo on dedicated branch `finch/echo-identity-layer` (standing no-touch rule lifted for this workstream).
+- New docs: `docs/echo-shared-identity-layer.md` (architecture PROPOSAL) and `docs/echo-identity-service-contract.md` (API contract draft v0.1).
+- PROPOSAL (ChatGPT, awaiting enki09): keep Echo's existing PostgreSQL as the authoritative memory store initially.
+- UNKNOWN: contents of enki09's Replit project `EsteemedWiltedNature` (Echo agent); read-only mapping blocked on code access via ChatGPT's Replit integration.
+- Design rules agreed: one identity/many surfaces; typed memory (fact/preference/observation/hypothesis, hypotheses never auto-promote); append-only episodic logs; reflection job with privacy filter for young users; capability registry; scoped tools (no raw shell); build alongside, migrate incrementally; Mike supervises, agents don't require him to relay.
 
 ## 10. Immediate next steps (all PROPOSALS — not decisions)
 
