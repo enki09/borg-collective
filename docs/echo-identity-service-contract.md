@@ -5,8 +5,13 @@
 **Date:** 2026-10-08. **Branch:** `finch/echo-identity-layer`.
 
 This contract defines the service all Echo surfaces call. It is
-storage-agnostic; the initial implementation is PROPOSAL-targeted at Echo's
-existing PostgreSQL database (per ChatGPT's recommendation, awaiting enki09).
+storage-agnostic.
+
+**Infrastructure (DECISION by enki09, 2026-10-08):** the initial implementation
+uses Echo's existing PostgreSQL database as the authoritative memory store, and
+the service lives inside Echo's existing Replit project (`EsteemedWiltedNature`)
+as a separable module — so it can move to a standalone service later without a
+rewrite.
 
 ## Authentication
 

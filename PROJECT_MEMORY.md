@@ -1,7 +1,7 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-08 6:05 PM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
-- **Latest contribution record:** [`memory/contributions/2026-10-08-finch-echo-identity-layer.md`](memory/contributions/2026-10-08-finch-echo-identity-layer.md)
+- **Last updated:** 2026-10-08 6:15 PM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
+- **Latest contribution record:** [`memory/contributions/2026-10-08-finch-echo-identity-layer-2.md`](memory/contributions/2026-10-08-finch-echo-identity-layer-2.md)
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
 
@@ -111,7 +111,7 @@ All FACT from reading files / GitHub API on 2026-10-02 unless labeled. Not yet f
 ### 2026-10-08 — Echo shared identity layer (Finch ↔ ChatGPT collaboration)
 - FACT: enki09 authorized Finch to prototype in this repo on dedicated branch `finch/echo-identity-layer` (standing no-touch rule lifted for this workstream).
 - New docs: `docs/echo-shared-identity-layer.md` (architecture PROPOSAL) and `docs/echo-identity-service-contract.md` (API contract draft v0.1).
-- PROPOSAL (ChatGPT, awaiting enki09): keep Echo's existing PostgreSQL as the authoritative memory store initially.
+- DECISION (enki09, 2026-10-08): keep Echo's existing PostgreSQL as the authoritative memory store during migration; host the identity service inside the existing Replit project (EsteemedWiltedNature) as a separable module.
 - UNKNOWN: contents of enki09's Replit project `EsteemedWiltedNature` (Echo agent); read-only mapping blocked on code access via ChatGPT's Replit integration.
 - Design rules agreed: one identity/many surfaces; typed memory (fact/preference/observation/hypothesis, hypotheses never auto-promote); append-only episodic logs; reflection job with privacy filter for young users; capability registry; scoped tools (no raw shell); build alongside, migrate incrementally; Mike supervises, agents don't require him to relay.
 

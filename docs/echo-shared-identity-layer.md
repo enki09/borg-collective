@@ -51,12 +51,17 @@ Every entry carries a type, a source, a confidence, and timestamps:
 
 Each entry records which surface learned it.
 
-**Storage (PROPOSAL by ChatGPT, 2026-10-08; awaiting enki09):** keep Echo's
-existing PostgreSQL database as the authoritative memory store initially, rather
-than introducing flat files or a new database. The API contract in
-`echo-identity-service-contract.md` is storage-agnostic; Postgres tables
-implement it. Rationale: avoid new infrastructure before it's needed; don't
-disrupt the working system.
+**Storage (DECISION by enki09, 2026-10-08):** Echo's existing PostgreSQL
+database is the authoritative memory store during migration. No new database.
+The API contract in `echo-identity-service-contract.md` is storage-agnostic;
+Postgres tables implement it. Rationale: avoid new infrastructure before it's
+needed; don't disrupt the working system.
+
+**Hosting (DECISION by enki09, 2026-10-08):** the identity service is built
+inside Echo's existing Replit project (`EsteemedWiltedNature`) initially, as a
+separable module — clean boundaries, no tight coupling to the rest of the app —
+so it can move to a standalone service later (e.g. if the game character needs
+it) without a rewrite.
 
 ### 3. Episodic log (append-only)
 
@@ -132,4 +137,4 @@ on the other. Reference flow:
 
 - Who approves `hypothesis → fact` promotions — enki09, reflection-with-evidence, or both? (PROPOSAL: reflection proposes with cited evidence; enki09 approves. Awaiting decision.)
 - Retention window for episodic logs?
-- Where does the identity service run — same Replit project (simple) or separate service (cleaner if the game character needs it too)?
+- Where does the identity service run? DECIDED 2026-10-08 (enki09): inside the existing Replit project as a separable module; see Storage/Hosting notes above.
