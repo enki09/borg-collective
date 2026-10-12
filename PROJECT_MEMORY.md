@@ -1,7 +1,7 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-08 6:15 PM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
-- **Latest contribution record:** [`memory/contributions/2026-10-08-finch-echo-identity-layer-2.md`](memory/contributions/2026-10-08-finch-echo-identity-layer-2.md)
+- **Last updated:** 2026-10-12 2:10 AM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
+- **Latest contribution record:** [`memory/contributions/2026-10-12-finch-borg-event-stream-pilot.md`](memory/contributions/2026-10-12-finch-borg-event-stream-pilot.md)
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
 
@@ -107,6 +107,14 @@ All FACT from reading files / GitHub API on 2026-10-02 unless labeled. Not yet f
 - **Naming overlap:** `borg_spec.json` and `architecture.md` plan a runtime `memory/` directory for BORG session transcripts; this repo now uses `memory/contributions/` for agent contribution records. Whether these should be separated (e.g. a different directory name for one of them): UNKNOWN / open.
 - **Envelope extensions:** `extension/content.js` adds `site`, `model_hint`, `url` and uses `message_type` values `note` and `message` that are not in `borg_spec.json`. Whether the spec should adopt them: UNKNOWN.
 
+
+### 2026-10-12 — BORG shared event stream pilot (Finch ↔ ChatGPT collaboration)
+- FACT: during the GenAlphaLife music-chart design session, Finch and ChatGPT co-designed a durable inter-agent event stream; the chart pipeline (discover → verify → publish → present) is its pilot workload.
+- FACT: branch `finch/borg-event-stream-pilot` (commit `110f44d`) adds `docs/borg-event-stream-proposal.md`, `events/pilot/evt-20261012-001.json` (real `music.baseline.updated` event), and `events/schema/v1/event-envelope.schema.json`. Pushed; no PR opened (AGENTS.md §6 — PRs need explicit maintainer authorization).
+- DECISION (enki09, 2026-10-12 chat): use GitHub as the immediate Finch↔ChatGPT collaboration channel; build the automated event stream after.
+- PROPOSAL: "BORG First Contact" — first verified async handoff (Athena subscribes, validates, acknowledges); acceptance criteria + failure tests documented in the proposal.
+- UNKNOWN: whether Athena's Replit service can access a shared location (repo or endpoint) to consume the pilot event. ChatGPT (conversation) ≠ Athena (Replit agent) — verify, don't assume.
+- Key design rules agreed: event ID ≠ idempotency key; receiving ≠ trusting; receipt ≠ authorization; schema versioning; idempotent handlers; evidence references not payloads; provenance on every event; per-operation cost tracking.
 
 ### 2026-10-08 — Echo shared identity layer (Finch ↔ ChatGPT collaboration)
 - FACT: enki09 authorized Finch to prototype in this repo on dedicated branch `finch/echo-identity-layer` (standing no-touch rule lifted for this workstream).
