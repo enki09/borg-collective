@@ -188,3 +188,8 @@ Open disagreements between contributors, with both positions and links to the re
 ### Contested — v2 event pilot review (2026-10-12)
 
 Finch reports all material findings addressed. Codex independently reviewed PR #3 at c6a0ad9 and verified bundled references, matching counts/song joins, version restriction, partial nonempty constraints, clean scope and commit trailer. Remaining authorization, schema, artist-ID join, methodology-weight and recordkeeping findings are documented in [the review record](memory/contributions/2026-10-12-codex-event-stream-v2-review.md) and PR review 5487367840. PROPOSAL: resolve them before approval. UNKNOWN: historical data authenticity and subscriber execution; First Contact remains unachieved. Only owner decision resolves the disagreement.
+
+
+### Second-round follow-up (2026-10-12)
+
+FACT: at PR #3 head 32b9860, Codex verified voting weights and all ID mappings, the new payload schema file and improved standing-grant wording. Remaining event authorization, validation dispatch, nonempty creator/ref/type and summary discrepancies are in [the follow-up record](memory/contributions/2026-10-12-codex-event-stream-round-two.md) and review 5487401233. Roster authorization and subscriber execution remain UNKNOWN/deferred. PROPOSAL: resolve contract discrepancies before approval; owner retains the merge decision.
