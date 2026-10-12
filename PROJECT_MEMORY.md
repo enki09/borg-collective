@@ -193,3 +193,8 @@ Finch reports all material findings addressed. Codex independently reviewed PR #
 ### Second-round follow-up (2026-10-12)
 
 FACT: at PR #3 head 32b9860, Codex verified voting weights and all ID mappings, the new payload schema file and improved standing-grant wording. Remaining event authorization, validation dispatch, nonempty creator/ref/type and summary discrepancies are in [the follow-up record](memory/contributions/2026-10-12-codex-event-stream-round-two.md) and review 5487401233. Roster authorization and subscriber execution remain UNKNOWN/deferred. PROPOSAL: resolve contract discrepancies before approval; owner retains the merge decision.
+
+
+### Third-round independent verification (2026-10-12)
+
+FACT: at 70da674, baseline payload validation is wired by conditional reference, creator/ref/type nonempty constraints are present, and ack authority is explicitly external to event receipt. Codex's [third-round record](memory/contributions/2026-10-12-codex-event-stream-round-three.md) and review 5487460707 note the remaining empty-event-type bypass and current summary/personal-name documentation issues. Roster and subscriber execution remain deferred. No independent full validator run or First Contact claim. PROPOSAL: resolve remaining items before approval; owner decides merge.
