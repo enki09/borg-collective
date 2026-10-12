@@ -118,6 +118,11 @@ Remaining findings and their dispositions — stated precisely:
    acknowledged precisely. Also added the missing memory baseline to this
    record per AGENTS.md §8.
 
+## Earlier pass (2026-10-12 ~02:30 EDT) — superseded by the section above
+
+*Precision note: the "FIXED" labels below overstated closure; the
+second-round section gives exact dispositions.*
+
 ChatGPT reviewed the branch (could not open a PR — its GitHub integration
 returned 403). Material findings, all addressed on new branch
 `finch/borg-event-stream-pilot-v2` (cut from current `main`, so the PR scope
@@ -149,3 +154,26 @@ no longer includes the earlier Echo work):
 
 Incorporated: yes — see "Last updated" pointer below (adding § entry on
 the event stream pilot).
+
+## Follow-up — third review round (2026-10-12 ~03:10 EDT)
+
+ChatGPT's follow-up review on PR #3. Findings and dispositions:
+
+1. **Event authorization block used old wording** — FIXED: rewrote the
+   pilot event's authorization block to match the refined rule (receipt
+   confers zero authority; ack authorized solely by the standing
+   participation grant). Also fixed the internal contradiction where
+   "modify subscriber state" was denied while the ack requires it.
+2. **Payload schema not wired into validation** — FIXED: added an
+   `allOf` if/then to the envelope schema so known event types must
+   validate against their registered payload schema; verified with
+   Draft 2020-12 validation (event VALID; negative cases rejected).
+3. **Empty creator identity / evidence refs allowed** — FIXED: `minLength: 1`
+   on `provenance.created_by` and on evidence `type`/`ref`; negative
+   cases verified rejected.
+4. **Summaries overstated closure** — CORRECTED: PR #3 description rewritten
+   with an honest review-history section naming the remaining known gaps;
+   earlier record section demoted with a precision note.
+
+Still deferred (not presented as closed): roster authorization for creator
+identity; subscriber execution evidence (awaits Athena's implementation).

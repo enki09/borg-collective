@@ -1,15 +1,15 @@
 {
   "authorization": {
+    "grants": [
+      "publish this event to the stream"
+    ],
     "does_not_grant": [
       "publish chart rankings",
       "publish content",
       "contact artists or managers",
-      "modify subscriber state"
+      "modify subscriber state (including the ack ledger)"
     ],
-    "grants": [
-      "publish this event to the stream"
-    ],
-    "note": "Receiving this event authorizes nothing beyond reading it. Publishing authority is never conferred by event receipt."
+    "note": "Receipt confers zero authority \u2014 including for the durable acknowledgment, which is authorized solely by the subscriber's standing participation grant from the maintainer (enki09), never by the event."
   },
   "cost": {
     "browser_tasks": 2,

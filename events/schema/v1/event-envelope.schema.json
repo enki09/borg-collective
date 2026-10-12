@@ -4,7 +4,7 @@
   "description": "Schema for BORG Collective shared event stream envelopes, v1. See docs/borg-event-stream-proposal.md.",
   "properties": {
     "authorization": {
-      "description": "Explicit scope of what event receipt authorizes. Receipt never grants publishing authority.",
+      "description": "Explicit scope of what event receipt authorizes. Receipt confers zero authority. The durable acknowledgment is authorized solely by the subscriber's standing participation grant from the maintainer, never by the event.",
       "properties": {
         "does_not_grant": {
           "items": {
@@ -63,7 +63,8 @@
           "type": "string"
         },
         "created_by": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "evidence": {
           "items": {
@@ -72,10 +73,12 @@
                 "type": "string"
               },
               "ref": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "type": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
             },
             "required": [
@@ -137,5 +140,30 @@
     "authorization"
   ],
   "title": "BORG Event Envelope v1",
-  "type": "object"
+  "type": "object",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "music.baseline.updated"
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "music.baseline.updated.schema.json"
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "description": "Known event types must validate their payload against the registered per-type schema."
+    }
+  ]
 }
