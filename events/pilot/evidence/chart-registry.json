@@ -1,0 +1,168 @@
+{
+  "artists": [
+    {
+      "country": "unverified",
+      "country_verified": false,
+      "id": "gal-a-001",
+      "instagram_handle": "@victoriawestofficialx",
+      "name": "Victoria West",
+      "spotify_artist_url": "https://open.spotify.com/artist/2g14SO8yjodxGFXxwPOGmL",
+      "tiktok_handle": "@victoriawestofficialx"
+    },
+    {
+      "country": "unverified",
+      "country_verified": false,
+      "id": "gal-a-002",
+      "instagram_handle": "@karolina_protsenko",
+      "name": "Karolina Rose",
+      "note": "Rebranded from Karolina Protsenko (violinist).",
+      "spotify_artist_url": "https://open.spotify.com/artist/1iFz3aWrm16DJCdXO4H19S",
+      "tiktok_handle": "@karolinarosemusic"
+    },
+    {
+      "country": "India (likely, unverified)",
+      "country_verified": false,
+      "id": "gal-a-003",
+      "instagram_handle": "@anukriti.official",
+      "name": "Anukriti",
+      "note": "Mike confirmed inclusion 2026-10-12: longstanding web presence as a young singer.",
+      "spotify_artist_url": "https://open.spotify.com/artist/7sAWNviugZ45WWO4EpRb7N",
+      "tiktok_handle": "@anukriti.official"
+    },
+    {
+      "country": "Spain",
+      "country_verified": true,
+      "id": "gal-a-004",
+      "instagram_handle": "@dj__gabi__",
+      "name": "DJ Gabi",
+      "note": "Kid DJ/producer, Marbella Spain. Bio: MY DAD RUN THIS ACCOUNT (parent-managed).",
+      "spotify_artist_url": "https://open.spotify.com/artist/0bQQpoqOjDswRZTHX8vpmr",
+      "tiktok_handle": "@dj_gabi_"
+    },
+    {
+      "country": "USA (Alaska)",
+      "country_verified": true,
+      "id": "gal-a-005",
+      "instagram_handle": "@alaskan_sunny_side_sisters",
+      "name": "Alaskan Sunnyside Sisters",
+      "note": "Alaskan bluegrass kid group.",
+      "spotify_artist_url": "https://open.spotify.com/artist/1U593ZDQY3jFAo0h9Niy9n",
+      "tiktok_handle": "@alaskansunnysidesister"
+    }
+  ],
+  "id_scheme": "gal-a-NNN for artists, gal-s-NNN for songs. IDs are permanent and never reused, even if an artist becomes ineligible.",
+  "songs": [
+    {
+      "artist_id": "gal-a-001",
+      "id": "gal-s-001",
+      "spotify_track_uri": null,
+      "title": "Maybe Tonight",
+      "youtube_video_id": "bTSRzLep8Vk"
+    },
+    {
+      "artist_id": "gal-a-001",
+      "id": "gal-s-002",
+      "spotify_track_uri": null,
+      "title": "Beautiful Ones",
+      "youtube_video_id": "RJ7NMSgGT9k"
+    },
+    {
+      "artist_id": "gal-a-001",
+      "id": "gal-s-003",
+      "spotify_track_uri": null,
+      "title": "Crucify Your Mind",
+      "youtube_video_id": "0QfCU-2fmUo"
+    },
+    {
+      "artist_id": "gal-a-001",
+      "id": "gal-s-004",
+      "spotify_track_uri": null,
+      "title": "I Got a Name",
+      "youtube_video_id": "C4vbhbUQaMM"
+    },
+    {
+      "artist_id": "gal-a-001",
+      "id": "gal-s-005",
+      "spotify_track_uri": null,
+      "title": "Call Me",
+      "youtube_video_id": "Q0KmWvTBnmY"
+    },
+    {
+      "artist_id": "gal-a-002",
+      "id": "gal-s-006",
+      "spotify_track_uri": null,
+      "title": "Advice",
+      "youtube_video_id": "1uJjLw2BEf4"
+    },
+    {
+      "artist_id": "gal-a-002",
+      "id": "gal-s-007",
+      "spotify_track_uri": null,
+      "title": "Good Girl",
+      "youtube_video_id": "DDu2qfjmmak"
+    },
+    {
+      "artist_id": "gal-a-002",
+      "id": "gal-s-008",
+      "spotify_track_uri": null,
+      "title": "Shiny Webs",
+      "youtube_video_id": "E1K61KRH9-Y"
+    },
+    {
+      "artist_id": "gal-a-003",
+      "id": "gal-s-009",
+      "spotify_track_uri": null,
+      "title": "Brother Louie",
+      "youtube_video_id": "xWOZCVfi8BI"
+    },
+    {
+      "artist_id": "gal-a-003",
+      "id": "gal-s-010",
+      "spotify_track_uri": null,
+      "title": "Pretty Little Baby",
+      "youtube_video_id": "Q1rlHV9DCyw"
+    },
+    {
+      "artist_id": "gal-a-004",
+      "id": "gal-s-011",
+      "spotify_track_uri": "spotify:track:2VW23qdrkyW6CArgyE7FKN",
+      "title": "Move Your Body to the Bass",
+      "youtube_video_id": "fx7NADPfhS4"
+    },
+    {
+      "artist_id": "gal-a-004",
+      "id": "gal-s-012",
+      "spotify_track_uri": "spotify:track:2lI6rCOmDRRdDaqG04eCyJ",
+      "title": "Lose My Mind",
+      "youtube_video_id": "4InEa1pubLg"
+    },
+    {
+      "artist_id": "gal-a-004",
+      "id": "gal-s-013",
+      "spotify_track_uri": "spotify:track:4IiT2tC3mV8bxaBYsTsVy2",
+      "title": "Give Me Some Techno",
+      "youtube_video_id": "0VzsRkJyDA4"
+    },
+    {
+      "artist_id": "gal-a-004",
+      "id": "gal-s-014",
+      "spotify_track_uri": "spotify:track:4ioUpWpFh7DMoHwePocPpN",
+      "title": "Dance",
+      "youtube_video_id": "gLJYZxNjrwM"
+    },
+    {
+      "artist_id": "gal-a-005",
+      "id": "gal-s-015",
+      "spotify_track_uri": "spotify:track:2BxqvpAbr76j1FoPlnWYBd",
+      "title": "Will The Circle Be Unbroken",
+      "youtube_video_id": "pcrB19hdfu8"
+    },
+    {
+      "artist_id": "gal-a-005",
+      "id": "gal-s-016",
+      "spotify_track_uri": "spotify:track:4K3ezI2Fi73qnUfBlOKn5y",
+      "title": "Rocky Top",
+      "youtube_video_id": "Ew2oJYU3Xj4"
+    }
+  ]
+}

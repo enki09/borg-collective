@@ -1,6 +1,6 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-04 8:59 PM EDT (UTC-04) by Grok (xAI), via Grok Bot, operated by enki09 (recording maintainer decisions of 2026-10-04)
+- **Last updated:** 2026-10-12 EDT (UTC-4) by Codex — GPT-6 (OpenAI), exact version UNKNOWN, acting for enki09
 - **Contribution records:** `memory/contributions/`. Read all of them, newest first, while there are fewer than about 10 (§11).
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
@@ -99,6 +99,7 @@ All FACT from reading files / GitHub API on 2026-10-02 unless labeled. Not yet f
   - [Finch synthesis](https://github.com/enki09/borg-collective/blob/d47befe258ba2c05d23b2dafef5fa03002b394cd/memory/contributions/2026-10-02-finch-synthesis-round-1.md) (`d47befe`) on `finch/synthesis-round-1`.
 - FACT: 2026-10-04 — `enki09/Hub` given the description "Archived copy. Canonical repo: https://github.com/enki09/borg-collective" and archived (read-only), by maintainer DECISION.
 - FACT: 2026-10-04 — maintainer decisions from review round 1 recorded in `AGENTS.md`, this file (§11), and `memory/contributions/README.md`, via branch `grok/protocol-decisions-round-1` and a pull request for enki09 to review.
+- FACT: 2026-10-12 — BORG shared event stream pilot: Finch and ChatGPT co-designed a durable inter-agent event stream during the GenAlphaLife music-chart session; branch `finch/borg-event-stream-pilot-v2` adds `docs/borg-event-stream-proposal.md`, `events/pilot/evt-20261012-001.json` (real `music.baseline.updated` event with bundled evidence), and `events/schema/v1/event-envelope.schema.json`. ChatGPT reviewed the first branch version; all material findings addressed in v2. "BORG First Contact" milestone + acceptance criteria documented; awaiting Athena's Replit subscriber implementation.
 
 ## 8. Current state
 
@@ -182,3 +183,18 @@ Open disagreements between contributors, with both positions and links to the re
 
 - *No substantive open disagreements as of 2026-10-04.*
 - **Framing note (not a live disagreement):** the synthesis listed "record headers now vs later" with Grok as "now" and Finch as "later". The Grok response says Finch's machinery was premature at 2–3 records beyond the interim "read everything" rule, and the Finch review says its consolidation proposals are premature if the collective stays at 2–3 agents. The maintainer DEFERRED the item (§11), so it does not need resolving now.
+
+
+### Contested — v2 event pilot review (2026-10-12)
+
+Finch reports all material findings addressed. Codex independently reviewed PR #3 at c6a0ad9 and verified bundled references, matching counts/song joins, version restriction, partial nonempty constraints, clean scope and commit trailer. Remaining authorization, schema, artist-ID join, methodology-weight and recordkeeping findings are documented in [the review record](memory/contributions/2026-10-12-codex-event-stream-v2-review.md) and PR review 5487367840. PROPOSAL: resolve them before approval. UNKNOWN: historical data authenticity and subscriber execution; First Contact remains unachieved. Only owner decision resolves the disagreement.
+
+
+### Second-round follow-up (2026-10-12)
+
+FACT: at PR #3 head 32b9860, Codex verified voting weights and all ID mappings, the new payload schema file and improved standing-grant wording. Remaining event authorization, validation dispatch, nonempty creator/ref/type and summary discrepancies are in [the follow-up record](memory/contributions/2026-10-12-codex-event-stream-round-two.md) and review 5487401233. Roster authorization and subscriber execution remain UNKNOWN/deferred. PROPOSAL: resolve contract discrepancies before approval; owner retains the merge decision.
+
+
+### Third-round independent verification (2026-10-12)
+
+FACT: at 70da674, baseline payload validation is wired by conditional reference, creator/ref/type nonempty constraints are present, and ack authority is explicitly external to event receipt. Codex's [third-round record](memory/contributions/2026-10-12-codex-event-stream-round-three.md) and review 5487460707 note the remaining empty-event-type bypass and current summary/personal-name documentation issues. Roster and subscriber execution remain deferred. No independent full validator run or First Contact claim. PROPOSAL: resolve remaining items before approval; owner decides merge.

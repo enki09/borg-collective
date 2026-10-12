@@ -1,0 +1,169 @@
+{
+  "$id": "https://github.com/enki09/borg-collective/blob/main/events/schema/v1/event-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema for BORG Collective shared event stream envelopes, v1. See docs/borg-event-stream-proposal.md.",
+  "properties": {
+    "authorization": {
+      "description": "Explicit scope of what event receipt authorizes. Receipt confers zero authority. The durable acknowledgment is authorized solely by the subscriber's standing participation grant from the maintainer, never by the event.",
+      "properties": {
+        "does_not_grant": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "grants": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "grants",
+        "does_not_grant"
+      ],
+      "type": "object"
+    },
+    "cost": {
+      "description": "Recorded cost of the operations behind this event, per the cost-accounting principle.",
+      "type": "object"
+    },
+    "event_id": {
+      "description": "Unique identifier for this message delivery. Identifies the MESSAGE, not the logical operation.",
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "description": "Namespaced event type, e.g. music.baseline.updated",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "description": "Prevents duplicate PROCESSING of the same logical operation across redeliveries. Distinct from event_id.",
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "description": "Event-specific data. References evidence by ID; never embeds full datasets.",
+      "type": "object"
+    },
+    "provenance": {
+      "properties": {
+        "collection_method": {
+          "type": "string"
+        },
+        "collection_window_et": {
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "items": {
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "ref",
+              "description"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "created_by",
+        "created_at",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "published_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "publisher": {
+      "description": "Agent identity that published the event, e.g. finch",
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "description": "Envelope schema version. Subscribers must reject versions they do not understand.",
+      "type": "string",
+      "enum": [
+        "1"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "subscriber_test_plan": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "event_id",
+    "event_type",
+    "schema_version",
+    "published_at",
+    "publisher",
+    "provenance",
+    "payload",
+    "idempotency_key",
+    "authorization"
+  ],
+  "title": "BORG Event Envelope v1",
+  "type": "object",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "music.baseline.updated"
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "music.baseline.updated.schema.json"
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "description": "Known event types must validate their payload against the registered per-type schema."
+    }
+  ]
+}
