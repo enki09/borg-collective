@@ -27,9 +27,11 @@
     ],
     "snapshot_refs": [
       "events/pilot/evidence/2026-10-12-raw.json",
-      "events/pilot/evidence/2026-10-12-youtube.json"
+      "events/pilot/evidence/2026-10-12-youtube.json",
+      "events/pilot/evidence/id-mapping.json"
     ],
-    "songs_tracked": 16
+    "songs_tracked": 16,
+    "payload_schema": "events/schema/v1/music.baseline.updated.schema.json"
   },
   "provenance": {
     "collection_method": "read-only browser collection; no logins, no posts, no changes",
@@ -60,6 +62,11 @@
         "ref": "events/pilot/evidence/chart-methodology-v1.3.md",
         "type": "methodology",
         "scope": "repo-relative; resolves for any consumer of this repository"
+      },
+      {
+        "type": "id-mapping",
+        "ref": "events/pilot/evidence/id-mapping.json",
+        "description": "Links week-1 snapshot entries (keyed by name) to permanent registry IDs; all future snapshots keyed by ID at collection"
       }
     ],
     "role": "research & data"

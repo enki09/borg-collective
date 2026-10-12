@@ -55,10 +55,10 @@ Artists who age out or go dormant are retired from eligibility with a one-week "
 
 | Signal | Weight | What it measures |
 |---|---|---|
-| Spotify monthly-listener growth | 35% | Week-over-week % change in the artist's Spotify monthly listeners (rolling 28-day; reported as change in rolling audience, never "new listeners") |
+| Spotify monthly-listener growth | 40% | Week-over-week % change in the artist's Spotify monthly listeners (rolling 28-day; reported as change in rolling audience, never "new listeners") |
 | Artist TikTok growth | 25% | Week-over-week % change in followers + median engagement on the artist's own TikTok |
 | Artist Instagram growth | 15% | Week-over-week % change in followers + median engagement on the artist's own Instagram |
-| GenAlphaLife audience response | 15% | Audience voting (see §8) |
+| GenAlphaLife audience response | 10% | Audience voting (see §8) |
 | Playlist signal | 10% | Reserved — activates only when reliable playlist save/follower data is available (see note) |
 
 **Playlist-signal note:** playlist follower growth measures the *playlist's* popularity, not any particular artist's. It earns its own separately-reported metric (playlist health), and only becomes a chart input when the data is reliable and attributable. Until then its 10% redistributes across the other signals.

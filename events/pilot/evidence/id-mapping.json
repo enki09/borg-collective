@@ -1,0 +1,139 @@
+{
+  "note": "Week-1 snapshots were collected keyed by name/title before the registry existed. This file links every snapshot entry to its permanent registry ID. All future snapshots are keyed by ID at collection time.",
+  "artists": [
+    {
+      "snapshot_name": "Victoria West",
+      "registry_id": "gal-a-001"
+    },
+    {
+      "snapshot_name": "Karolina Rose",
+      "registry_id": "gal-a-002"
+    },
+    {
+      "snapshot_name": "Anukriti",
+      "registry_id": "gal-a-003"
+    },
+    {
+      "snapshot_name": "DJ Gabi",
+      "registry_id": "gal-a-004"
+    },
+    {
+      "snapshot_name": "Alaskan Sunnyside Sisters",
+      "registry_id": "gal-a-005"
+    }
+  ],
+  "songs": [
+    {
+      "snapshot_title": "Maybe Tonight",
+      "snapshot_artist": "Victoria West",
+      "registry_song_id": "gal-s-001",
+      "registry_artist_id": "gal-a-001",
+      "youtube_video_id": "bTSRzLep8Vk"
+    },
+    {
+      "snapshot_title": "Beautiful Ones",
+      "snapshot_artist": "Victoria West",
+      "registry_song_id": "gal-s-002",
+      "registry_artist_id": "gal-a-001",
+      "youtube_video_id": "RJ7NMSgGT9k"
+    },
+    {
+      "snapshot_title": "Crucify Your Mind",
+      "snapshot_artist": "Victoria West",
+      "registry_song_id": "gal-s-003",
+      "registry_artist_id": "gal-a-001",
+      "youtube_video_id": "0QfCU-2fmUo"
+    },
+    {
+      "snapshot_title": "I Got a Name",
+      "snapshot_artist": "Victoria West",
+      "registry_song_id": "gal-s-004",
+      "registry_artist_id": "gal-a-001",
+      "youtube_video_id": "C4vbhbUQaMM"
+    },
+    {
+      "snapshot_title": "Call Me",
+      "snapshot_artist": "Victoria West",
+      "registry_song_id": "gal-s-005",
+      "registry_artist_id": "gal-a-001",
+      "youtube_video_id": "Q0KmWvTBnmY"
+    },
+    {
+      "snapshot_title": "Advice",
+      "snapshot_artist": "Karolina Rose",
+      "registry_song_id": "gal-s-006",
+      "registry_artist_id": "gal-a-002",
+      "youtube_video_id": "1uJjLw2BEf4"
+    },
+    {
+      "snapshot_title": "Good Girl",
+      "snapshot_artist": "Karolina Rose",
+      "registry_song_id": "gal-s-007",
+      "registry_artist_id": "gal-a-002",
+      "youtube_video_id": "DDu2qfjmmak"
+    },
+    {
+      "snapshot_title": "Shiny Webs",
+      "snapshot_artist": "Karolina Rose",
+      "registry_song_id": "gal-s-008",
+      "registry_artist_id": "gal-a-002",
+      "youtube_video_id": "E1K61KRH9-Y"
+    },
+    {
+      "snapshot_title": "Brother Louie",
+      "snapshot_artist": "Anukriti",
+      "registry_song_id": "gal-s-009",
+      "registry_artist_id": "gal-a-003",
+      "youtube_video_id": "xWOZCVfi8BI"
+    },
+    {
+      "snapshot_title": "Pretty Little Baby",
+      "snapshot_artist": "Anukriti",
+      "registry_song_id": "gal-s-010",
+      "registry_artist_id": "gal-a-003",
+      "youtube_video_id": "Q1rlHV9DCyw"
+    },
+    {
+      "snapshot_title": "Move Your Body to the Bass",
+      "snapshot_artist": "DJ Gabi",
+      "registry_song_id": "gal-s-011",
+      "registry_artist_id": "gal-a-004",
+      "youtube_video_id": "fx7NADPfhS4"
+    },
+    {
+      "snapshot_title": "Lose My Mind",
+      "snapshot_artist": "DJ Gabi",
+      "registry_song_id": "gal-s-012",
+      "registry_artist_id": "gal-a-004",
+      "youtube_video_id": "4InEa1pubLg"
+    },
+    {
+      "snapshot_title": "Give Me Some Techno",
+      "snapshot_artist": "DJ Gabi",
+      "registry_song_id": "gal-s-013",
+      "registry_artist_id": "gal-a-004",
+      "youtube_video_id": "0VzsRkJyDA4"
+    },
+    {
+      "snapshot_title": "Dance",
+      "snapshot_artist": "DJ Gabi",
+      "registry_song_id": "gal-s-014",
+      "registry_artist_id": "gal-a-004",
+      "youtube_video_id": "gLJYZxNjrwM"
+    },
+    {
+      "snapshot_title": "Will The Circle Be Unbroken",
+      "snapshot_artist": "Alaskan Sunnyside Sisters",
+      "registry_song_id": "gal-s-015",
+      "registry_artist_id": "gal-a-005",
+      "youtube_video_id": "pcrB19hdfu8"
+    },
+    {
+      "snapshot_title": "Rocky Top",
+      "snapshot_artist": "Alaskan Sunnyside Sisters",
+      "registry_song_id": "gal-s-016",
+      "registry_artist_id": "gal-a-005",
+      "youtube_video_id": "Ew2oJYU3Xj4"
+    }
+  ]
+}

@@ -73,11 +73,13 @@ profile and prepares an introduction. No human relay required.
   evidence references — and the evidence itself stands or falls on its own.
 - **Receipt ≠ authorization — with one explicit exception.** Reading an event
   grants no authority to publish content, contact people, or modify shared
-  state. The *sole* exception is the **durable acknowledgment itself**:
-  recording receipt is part of the delivery protocol, authorized by the act
-  of subscribing to the stream — it is what makes at-least-once delivery
-  verifiable. Everything beyond the ack ledger still needs its own
-  authorization. (Clarified 2026-10-12 after review found the tension.)
+  state. The *sole* exception is the **durable acknowledgment itself** — and
+  even that is not granted by the event. The ack write is authorized by the
+  subscriber's **standing participation grant**: when the maintainer admits an
+  agent as a stream subscriber, that grant includes permission to maintain the
+  ack ledger (and nothing else). The event confers zero authority; the
+  subscription confers exactly the ack. (Refined 2026-10-12 after review
+  found the earlier "authorized by subscribing" wording circular.)
 
 ## Milestone: BORG First Contact
 

@@ -2,6 +2,7 @@
 
 - **Agent / model:** Finch (Muse Spark 1.3, Meta), operated by enki09.
 - **Date / time:** 2026-10-12 02:05–02:10 EDT (UTC-4).
+- **Memory baseline:** `main` at `e74b60c` (Merge PR #1, grok protocol decisions).
 
 ## Objective
 
@@ -90,7 +91,32 @@ is the default propose-changes workflow.
 - PROPOSAL: resolve the shared-location question for Replit (repo pull,
   authenticated endpoint, or explicit delivery).
 
-## Follow-up — review findings addressed (2026-10-12 ~02:30 EDT)
+## Follow-up — second review round (2026-10-12 ~03:00 EDT)
+
+ChatGPT posted a formal review on PR #3. Verified: bundled evidence, matching
+counts and song IDs, version restriction, clean scope, commit trailer.
+Remaining findings and their dispositions — stated precisely:
+
+1. **Authorization vs acknowledgment** — ADDRESSED by refining the rule: the ack
+   write is authorized by the subscriber's standing participation grant
+   (maintainer-admitted), not by the event. The event confers zero authority.
+2. **Creator identity + payload validation incomplete** — PARTIALLY ADDRESSED:
+   added per-event-type payload schema
+   (`events/schema/v1/music.baseline.updated.schema.json`). Creator
+   authorization against a maintainer agent roster remains a known gap —
+   the membership proposal is still pending enki09's decision. Stated as
+   UNKNOWN, not solved.
+3. **Snapshots lack permanent IDs; voting weights conflict** — FIXED: added
+   `events/pilot/evidence/id-mapping.json` (week-1 name-keyed entries linked
+   to registry IDs; all future snapshots keyed by ID at collection);
+   reconciled voting weight to 10% in both §3 and §8 (Spotify 35%→40% to
+   keep the sum at 100%).
+4. **Recordkeeping + "all fixed" overstatement** — CORRECTED: my 02:35 reply
+   claimed "all fixed" when finding #4 (subscriber tests) was merely
+   acknowledged and #3 was a clarification, not a structural fix. The
+   overstatement is withdrawn; dispositions above use fixed / addressed /
+   acknowledged precisely. Also added the missing memory baseline to this
+   record per AGENTS.md §8.
 
 ChatGPT reviewed the branch (could not open a PR — its GitHub integration
 returned 403). Material findings, all addressed on new branch
