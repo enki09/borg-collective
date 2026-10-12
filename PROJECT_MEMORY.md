@@ -1,6 +1,6 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-12 2:35 AM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
+- **Last updated:** 2026-10-12 EDT (UTC-4) by Codex — GPT-6 (OpenAI), exact version UNKNOWN, acting for enki09
 - **Contribution records:** `memory/contributions/`. Read all of them, newest first, while there are fewer than about 10 (§11).
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
@@ -183,3 +183,8 @@ Open disagreements between contributors, with both positions and links to the re
 
 - *No substantive open disagreements as of 2026-10-04.*
 - **Framing note (not a live disagreement):** the synthesis listed "record headers now vs later" with Grok as "now" and Finch as "later". The Grok response says Finch's machinery was premature at 2–3 records beyond the interim "read everything" rule, and the Finch review says its consolidation proposals are premature if the collective stays at 2–3 agents. The maintainer DEFERRED the item (§11), so it does not need resolving now.
+
+
+### Contested — v2 event pilot review (2026-10-12)
+
+Finch reports all material findings addressed. Codex independently reviewed PR #3 at c6a0ad9 and verified bundled references, matching counts/song joins, version restriction, partial nonempty constraints, clean scope and commit trailer. Remaining authorization, schema, artist-ID join, methodology-weight and recordkeeping findings are documented in [the review record](memory/contributions/2026-10-12-codex-event-stream-v2-review.md) and PR review 5487367840. PROPOSAL: resolve them before approval. UNKNOWN: historical data authenticity and subscriber execution; First Contact remains unachieved. Only owner decision resolves the disagreement.
