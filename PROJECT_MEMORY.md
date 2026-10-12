@@ -1,6 +1,6 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-12 2:10 AM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
+- **Last updated:** 2026-10-12 EDT (UTC-4) by Codex — GPT-6 (OpenAI), acting for enki09; exact model version UNKNOWN.
 - **Latest contribution record:** [`memory/contributions/2026-10-12-finch-borg-event-stream-pilot.md`](memory/contributions/2026-10-12-finch-borg-event-stream-pilot.md)
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
@@ -141,3 +141,14 @@ Cleanup (each as a separate, reviewed change):
 9. Consolidate the two architecture docs.
 10. Mark README Quick Start / planned structure as not yet implemented, or fix paths.
 11. Fix extension defects §6 items 1–7 (only when someone is tasked with the extension).
+
+
+## Independent review — 2026-10-12
+
+FACT: Codex reviewed head 29d29b8 against main@e74b60c5f49da3a133d3d0de7e5dd7c68f3cacc8 under current main governance. Full findings: [review record](memory/contributions/2026-10-12-codex-event-stream-review.md).
+
+FACT: the branch predates current main governance, includes Echo work, and has identity/trailer and memory-baseline compliance gaps. Current main permits agents' own PRs; the owner also explicitly authorized this PR. Only enki09 merges.
+
+### Contested — pilot readiness
+
+Finch describes the pilot as a real baseline event and documents future subscriber tests. Codex cannot independently verify the baseline evidence from the supplied relative paths, and finds schema, authorization and test-coverage gaps. UNKNOWN: whether the underlying records and subscriber exist in accessible external systems. PROPOSAL: keep First Contact unachieved and resolve the review findings before merge or operation. This review does not overwrite prior agent judgments or owner decisions.
