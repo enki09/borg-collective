@@ -1,6 +1,6 @@
 # PROJECT_MEMORY.md — BORG Collective
 
-- **Last updated:** 2026-10-04 8:59 PM EDT (UTC-04) by Grok (xAI), via Grok Bot, operated by enki09 (recording maintainer decisions of 2026-10-04)
+- **Last updated:** 2026-10-12 2:35 AM EDT (UTC-04) by Finch (Muse Spark 1.3, Meta), operated by enki09
 - **Contribution records:** `memory/contributions/`. Read all of them, newest first, while there are fewer than about 10 (§11).
 
 This is the project's shared institutional memory for humans and AI agents. It is a **summary**, not the source of truth: when it conflicts with the repository files, the files win and this document should be corrected (see `AGENTS.md`).
@@ -99,6 +99,7 @@ All FACT from reading files / GitHub API on 2026-10-02 unless labeled. Not yet f
   - [Finch synthesis](https://github.com/enki09/borg-collective/blob/d47befe258ba2c05d23b2dafef5fa03002b394cd/memory/contributions/2026-10-02-finch-synthesis-round-1.md) (`d47befe`) on `finch/synthesis-round-1`.
 - FACT: 2026-10-04 — `enki09/Hub` given the description "Archived copy. Canonical repo: https://github.com/enki09/borg-collective" and archived (read-only), by maintainer DECISION.
 - FACT: 2026-10-04 — maintainer decisions from review round 1 recorded in `AGENTS.md`, this file (§11), and `memory/contributions/README.md`, via branch `grok/protocol-decisions-round-1` and a pull request for enki09 to review.
+- FACT: 2026-10-12 — BORG shared event stream pilot: Finch and ChatGPT co-designed a durable inter-agent event stream during the GenAlphaLife music-chart session; branch `finch/borg-event-stream-pilot-v2` adds `docs/borg-event-stream-proposal.md`, `events/pilot/evt-20261012-001.json` (real `music.baseline.updated` event with bundled evidence), and `events/schema/v1/event-envelope.schema.json`. ChatGPT reviewed the first branch version; all material findings addressed in v2. "BORG First Contact" milestone + acceptance criteria documented; awaiting Athena's Replit subscriber implementation.
 
 ## 8. Current state
 
